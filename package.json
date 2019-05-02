@@ -2,7 +2,7 @@
   "name": "liri-node-app",
   "version": "1.0.0",
   "description": "Liri bot.",
-  "main": "index.js",
+  "main": "liri.js",
   "dependencies": {
     "axios": "^0.18.0",
     "date-fns": "^1.30.1",
