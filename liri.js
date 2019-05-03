@@ -62,7 +62,7 @@ function searchSongs(value) {
         if (err) {
             return console.log('Error occurred: ' + err);
         }
-        //console.log("Artists: " + data.tracks.items[0].artists[0]); // Cannot seem to get this to work.
+        console.log("Artists: " + data.tracks.items[0].artists[0]); // Cannot seem to get this to work.
         console.log("Song Name: " + data.tracks.items[0].name);
         console.log("Preview Link: " + data.tracks.items[0].preview_url);
         console.log("Album: " + data.tracks.items[0].album.name);
