@@ -16,7 +16,6 @@ const keys = require("./keys.js");
 var Spotify = require('node-spotify-api');
 var spotify = new Spotify(keys.spotify);
 
-//const ticketmaster = new Ticketmaster(keys.ticketmaster);
 
 var action = process.argv[2];
 var value = process.argv[3];
@@ -48,8 +47,7 @@ function searchConcerts(value) {
 
         axios.get("https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + value + "&apikey=" + keys.ticketmaster.id).then(
             function(response) {
-                console.log("Axios is running.");
-                console.log(response);
+                console.log(response); // Getting response status 200, unable to make sense of returned data.
             }
         );
 
@@ -58,19 +56,17 @@ function searchConcerts(value) {
 
 function searchSongs(value) {
     if (!value) {
-        console.log("Please provide a song name.");
-    } else {
-
-        spotify.search({ type: 'track', query: value }, function(err, data) {
-            if (err) {
-                return console.log('Error occurred: ' + err);
-            }
-
-            console.log(data); // This is returning far too many records. How to filter them down?
-
-        });
-
-    }
+        value = "Ace of Base The Sign";
+    } 
+    spotify.search({ type: 'track', query: value, limit: 1 }, function(err, data) {
+        if (err) {
+            return console.log('Error occurred: ' + err);
+        }
+        //console.log("Artists: " + data.tracks.items[0].artists[0]); // Cannot seem to get this to work.
+        console.log("Song Name: " + data.tracks.items[0].name);
+        console.log("Preview Link: " + data.tracks.items[0].preview_url);
+        console.log("Album: " + data.tracks.items[0].album.name);
+    });
 }
 
 function searchMovies(value) {
@@ -93,5 +89,7 @@ function searchMovies(value) {
 }
 
 function feelingLucky() {
-    
+    // Using FS, read contents of random.txt (which contents)?
+    // Use the contents to call one of Liri's commands (which command)?
+
 }
