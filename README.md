@@ -14,6 +14,8 @@ as well as a special command called
 
 ...which runs a randomly selected user command based on the contents of a text file.
 
+This app is deployed on GitHub at https://andrewbayles.github.io/liri-node-app/
+
 ## Commands
 
 # search-concerts (artist)
